@@ -7,7 +7,7 @@
 
 # =============================================================================
 # Project: SCAN2CAD
-# Configuration: Debug
+# Configuration: RelWithDebInfo
 # =============================================================================
 # =============================================================================
 
@@ -49,7 +49,7 @@ rule CUSTOM_COMMAND
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\Users\thor\source\repos\xjlqr\SCAN2CAD\SCAN2CAD -BC:\Users\thor\source\repos\xjlqr\SCAN2CAD\SCAN2CAD\out\build\x64-Debug
+  command = "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:\Users\thor\source\repos\xjlqr\SCAN2CAD\SCAN2CAD -BC:\Users\thor\source\repos\xjlqr\SCAN2CAD\SCAN2CAD\out\build\x64-Release
   description = Re-running CMake...
   generator = 1
 
