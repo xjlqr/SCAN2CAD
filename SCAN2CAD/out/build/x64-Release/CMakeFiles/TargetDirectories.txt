@@ -1,0 +1,3 @@
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Release/CMakeFiles/SCAN2CAD.dir
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Release/CMakeFiles/edit_cache.dir
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Release/CMakeFiles/rebuild_cache.dir
