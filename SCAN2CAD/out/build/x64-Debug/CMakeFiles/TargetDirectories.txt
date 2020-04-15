@@ -1,3 +1,3 @@
-C:/Users/thor/source/repos/xjlqr/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/SCAN2CAD.dir
-C:/Users/thor/source/repos/xjlqr/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/edit_cache.dir
-C:/Users/thor/source/repos/xjlqr/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/SCAN2CAD.dir
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir

@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/thor/source/repos/xjlqr/SCAN2CAD/SCAN2CAD
+# Install script for directory: C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/thor/Source/Repos/xjlqr/SCAN2CAD/SCAN2CAD/out/install/x64-Release")
+  set(CMAKE_INSTALL_PREFIX "C:/Users/talle/Source/Repos/SCAN2CAD/SCAN2CAD/out/install/x64-Release")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/thor/source/repos/xjlqr/SCAN2CAD/SCAN2CAD/out/build/x64-Release/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/talle/source/repos/SCAN2CAD/SCAN2CAD/out/build/x64-Release/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
