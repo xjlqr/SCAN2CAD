@@ -27,8 +27,16 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/surface/gp3.h>
+#include <pcl/segmentation/extract_clusters.h>
+#include <pcl/filters/radius_outlier_removal.h>
+#include <pcl/surface/marching_cubes.h>
+#include <pcl/surface/marching_cubes_rbf.h>
+#include <pcl/surface/poisson.h>
+#include <pcl/surface/grid_projection.h>
+#include <pcl/surface/concave_hull.h>
 
 //Other stuff
+#include <Eigen/LU>
 #include "simple_fft/fft_settings.h"
 #include "simple_fft/fft.h"
 
@@ -43,3 +51,8 @@ unsigned int pow2_ceil(size_t number) {
 double noise() {
     return (rand() / (RAND_MAX + 1.0f) - 0.5);
 }
+
+typedef struct {
+    Eigen::Vector3d point;
+    Eigen::Vector3d direction;
+}line;
