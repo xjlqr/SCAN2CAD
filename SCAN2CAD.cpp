@@ -6,7 +6,7 @@
 
 const double EPSILON = 0.0001; //Boundingbox check error margin
 const int CLUSTER_MIN_SIZE = 64; //Minimum amount of points in a cluster
-const double CLUSTER_MESH_DISTANCE_THRESHOLD = 5.0; //Maximum distance to cluster
+const double CLUSTER_DISTANCE_THRESHOLD = 5.0; //Maximum distance to cluster
 
 using namespace std;
 using namespace pcl;
@@ -140,9 +140,55 @@ double closest_point_dist(PointXYZ point, PointCloud<PointXYZ> cloud ) {
 }
 
 int main(int argc, char** argv) {
-    
-    cout << "Loading file... ";
+    #ifdef DEBUG
+        //Create test dataset
+        PointCloud<PointXYZ> testbeam;
 
+        //Test beam parameters
+        vector<double> testbeam_position{ 0.0, 0.0, 0.0 };
+        vector<int> testbeam_size{ 120, 60, 60 }; //must be divisible by 6
+        double testbeam_noiselevel = 0.0; //range of the noise: -0.2 to 0.2
+
+        //Create test beam
+        int size_x = testbeam_size[0];
+        int size_y = testbeam_size[1];
+        int size_z = testbeam_size[2];
+        cout << (size_x % 6 != 0 || size_y % 6 != 0 || size_z % 6 != 0 ? "Warning: Sides of test beam must be divisible by 6" : "Creating Test Beam") << endl;
+        testbeam.width = size_x * size_y * size_z;
+        testbeam.height = 1;
+        testbeam.is_dense = false;
+        testbeam.points.resize(testbeam.width);
+
+        unsigned int beam_size = 0;
+        for (int i = 0; i <= size_x; i++) {//Loop through all grid points in the (x, y, z) box
+            for (int j = 0; j <= size_y; j++) {
+                for (int k = 0; k <= size_z; k++) {
+                    if (//Include only these points in the beam:
+                        k == 0 || k == (size_z) || //top and bottom
+                        (j == 0 || j == (size_y)) && (k <= size_z / 6 || k >= size_z - (size_z / 6)) || //side edges of bottom/top
+                        (abs((j - size_y / 2)) == size_y / 6) && (!(k <= size_z / 6 || k >= size_z - (size_z / 6))) || //Inside edge of botto/top
+                        (abs((k - size_z / 2)) == size_z / 3 && (abs((j - size_y / 2)) >= size_y / 6)) || //Stem 
+                        (abs((j - size_y / 2)) <= size_y / 6 || abs((k - size_z / 2)) >= size_z / 3) && (i == 0 || i == size_x)//End caps
+                        ) {
+                        testbeam[beam_size].x = i + testbeam_position[0] + testbeam_noiselevel * noise();
+                        testbeam[beam_size].y = j + testbeam_position[1] + testbeam_noiselevel * noise();
+                        testbeam[beam_size].z = k + testbeam_position[2] + testbeam_noiselevel * noise();
+                        beam_size++;
+                    }
+                }
+            }
+        }
+
+
+        testbeam.width = beam_size;
+        testbeam.points.resize(beam_size);
+
+        cout << "Saving pcd..." << endl;
+        io::savePCDFileBinary("test_beam.pcd", testbeam);
+        cout << "Saved " << testbeam.size() << " data points.\n" << endl;
+    #endif
+
+    cout << "Loading file... ";
     //Load file
     pcl::PointCloud<pcl::PointXYZ>::Ptr beam(new pcl::PointCloud<pcl::PointXYZ>);
     pcl::PCDReader reader;
@@ -180,13 +226,12 @@ int main(int argc, char** argv) {
     EuclideanClusterExtraction<PointXYZ> ece;
     search::KdTree<PointXYZ>::Ptr ece_tree(new search::KdTree<PointXYZ>);
     ece.setSearchMethod(ece_tree);
-    ece.setClusterTolerance(2.0*sqrt(2.0)); //Max distance between any two points to be considered cluster. Should be around ~2*
+    ece.setClusterTolerance(2.5); //Max distance between any two points to be considered cluster. Should be around ~2.5*
     ece.setMinClusterSize(CLUSTER_MIN_SIZE);          //Min number of points to be considered cluster
-    ece.setMaxClusterSize(1000000000);  //Max number of points to be considered cluster
 
     RadiusOutlierRemoval<PointXYZ> ror(true);
     ror.setNegative(false);             //false: Exclude points found; true: Keeps only points found (should be false)
-    ror.setRadiusSearch(1.2*sqrt(2.0)); //Max search radius. Stops NN search when distance to neighbor exceeds this radius. Should be > max KNN distance between point (test data is about ~1.6)
+    ror.setRadiusSearch(1.7); //Max search radius. Stops NN search when distance to neighbor exceeds this radius. Should be > max KNN distance between point (test data is about ~1.6)
     ror.setMinNeighborsInRadius(8);     //Minimum neighbors found for keeping. In planes: ~1 excludes outliers only, ~3-4 excludes corners, ~8-9 excludes edge points, more than ~9-10 deletes entire planes
 
 
@@ -195,7 +240,6 @@ int main(int argc, char** argv) {
     int cloud_index = 0;
     int cluster_count = 0;
     while (true) {
-
 
         #ifdef DEBUG
             cout << "Iteration " << cloud_index + 1 << ": Fitting plane..." << endl;
@@ -275,7 +319,7 @@ int main(int argc, char** argv) {
             }
 
             #ifdef DEBUG
-                cout << "\tDeleting RANSAC points from dataset" << endl;
+                cout << "\tDeleting plane inliers from dataset" << endl;
             #endif
 
             //Remove spent points from dataset
@@ -295,8 +339,6 @@ int main(int argc, char** argv) {
         cloud_index++;
     }
 
-
-
     cout << "Building list of corner points... ";
     vector<vector<PointCloud<PointXYZ>>> face_points(point_clusters.size());
     for (int i = 0; i < point_clusters.size(); i++) {
@@ -304,13 +346,23 @@ int main(int argc, char** argv) {
     }
 
     vector<PointXYZ> corner_points = find_corner_points(planes, bbox);
+
+    #ifdef DEBUG
+        PointCloud<PointXYZ> cornercloud;
+        cornercloud.width = corner_points.size();
+        for (int i = 0; i < corner_points.size(); i++) {
+            cornercloud.push_back(corner_points[i]);
+        }
+        io::savePCDFile("intersections.pcd", cornercloud, false);
+    #endif
+
     cout << corner_points.size() << " possible mesh edge points found." << endl;
 
     cout << "Grouping mesh edges by cluster... ";
     for (int i = 0; i < point_clusters.size(); i++ ) {
         for (int j = 0; j < point_clusters[i].size(); j++) {
             for (int k = 0; k < corner_points.size(); k++) {
-                if (closest_point_dist(corner_points[k], point_clusters[i][j]) < CLUSTER_MESH_DISTANCE_THRESHOLD) {
+                if (closest_point_dist(corner_points[k], point_clusters[i][j]) < CLUSTER_DISTANCE_THRESHOLD) {
                     face_points[i][j].push_back(corner_points[k]);
                 }
             }
@@ -319,8 +371,7 @@ int main(int argc, char** argv) {
     cout << "done!" << endl;
 
 
-
-    cout << "Building mesh faces... ";
+    cout << "Building mesh faces... " << endl;
     vector < PolygonMesh > mesh;
     for (int i = 0; i < face_points.size(); i++) {
         for (int j = 0; j < face_points[i].size(); j++) {
@@ -330,7 +381,7 @@ int main(int argc, char** argv) {
                 filename += string(to_string(i));
                 filename += string(to_string(j));
                 filename += ".pcd";
-                cout << "\t\tSaving " << filename << endl;
+                cout << "\tSaving " << filename << endl;
                 io::savePCDFileBinary(filename, face_points[i][j]);
             #endif
 
@@ -338,7 +389,7 @@ int main(int argc, char** argv) {
             copyPointCloud(face_points[i][j], *face);
 
             #ifdef DEBUG
-                cout << "\t\tTriangulating mesh face " << i << "." << j << endl;
+                cout << "\tTriangulating mesh face " << i << "." << j << endl;
             #endif
 
             search::KdTree<PointXYZ>::Ptr mesh_tree(new search::KdTree<PointXYZ>);
@@ -359,12 +410,14 @@ int main(int argc, char** argv) {
                 filename += string(to_string(i));
                 filename += string(to_string(j));
                 filename += ".vtk";
-                cout << "\t\tSaving " << filename << endl << endl;
+                cout << "\tSaving " << filename << endl << endl;
                 io::saveVTKFile(filename, triangles);
             #endif                     
         }
     }
-    cout << "done!" << endl;
+    cout << "Mesh faces done!" << endl;
+
+
     
     cout << "Merging mesh faces... ";
     while (mesh.size() > 1) {
@@ -405,7 +458,7 @@ int main(int argc, char** argv) {
                         }
                     }
 
-                    //todo: figure out how to delete the now-unused verteces
+                    //todo: figure out how to delete the now-unused vertices from the mesh file
 
                 }
             }
@@ -417,9 +470,9 @@ int main(int argc, char** argv) {
 
     #ifdef DEBUG
         cout << "Saving various formats for debugging" << endl;
-        io::savePolygonFile("mesh.vtk", mesh[0], false);
-        io::savePolygonFile("mesh.stl", mesh[0], true);
-        io::savePolygonFile("mesh.ply", mesh[0], true);
+        io::savePolygonFile("mesh_debug.vtk", mesh[0], false);
+        io::savePolygonFile("mesh_debug.stl", mesh[0], false);
+        io::savePolygonFile("mesh_debug.ply", mesh[0], false);
     #endif
 
     cout << "Saving output: mesh.stl" << endl;

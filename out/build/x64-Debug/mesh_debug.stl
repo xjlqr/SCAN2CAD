@@ -1,0 +1,366 @@
+solid Visualization Toolkit generated SLA File
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 40 60
+   vertex 0 60 60
+   vertex 0 40 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 60 50
+   vertex 0 40 50
+   vertex 0 60 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 40 10
+   vertex 0 60 10
+   vertex 0 40 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 60 0
+   vertex 0 40 0
+   vertex 0 60 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 60
+   vertex 0 40 60
+   vertex 0 20 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 40 50
+   vertex 0 20 50
+   vertex 0 40 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 10
+   vertex 0 40 10
+   vertex 0 20 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 40 0
+   vertex 0 20 0
+   vertex 0 40 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 0 60
+   vertex 0 20 60
+   vertex 0 0 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 20 50
+   vertex 0 0 50
+   vertex 0 20 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 0 10
+   vertex 0 20 10
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 20 0
+   vertex 0 0 0
+   vertex 0 20 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 50
+   vertex 0 40 50
+   vertex 0 20 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0 40 10
+   vertex 0 20 10
+   vertex 0 40 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 40 60
+   vertex 120 60 60
+   vertex 120 40 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 60 50
+   vertex 120 40 50
+   vertex 120 60 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 40 10
+   vertex 120 60 10
+   vertex 120 40 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 60 0
+   vertex 120 40 0
+   vertex 120 60 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 20 60
+   vertex 120 40 60
+   vertex 120 20 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 50
+   vertex 120 20 50
+   vertex 120 40 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 20 10
+   vertex 120 40 10
+   vertex 120 20 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 0
+   vertex 120 20 0
+   vertex 120 40 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 0 60
+   vertex 120 20 60
+   vertex 120 0 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 20 50
+   vertex 120 0 50
+   vertex 120 20 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 0 10
+   vertex 120 20 10
+   vertex 120 0 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 20 0
+   vertex 120 0 0
+   vertex 120 20 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 120 20 50
+   vertex 120 40 50
+   vertex 120 20 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 10
+   vertex 120 20 10
+   vertex 120 40 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 60
+   vertex 120 60 60
+   vertex 0 60 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 60 50
+   vertex 0 60 50
+   vertex 120 60 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 10
+   vertex 120 60 10
+   vertex 0 60 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 60 0
+   vertex 0 60 0
+   vertex 120 60 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 0 60
+   vertex 120 0 60
+   vertex 0 0 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 50
+   vertex 0 0 50
+   vertex 120 0 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 0 10
+   vertex 120 0 10
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 0
+   vertex 0 0 0
+   vertex 120 0 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 40 50
+   vertex 120 40 50
+   vertex 0 40 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 10
+   vertex 0 40 10
+   vertex 120 40 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 50
+   vertex 120 20 50
+   vertex 0 20 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 20 10
+   vertex 0 20 10
+   vertex 120 20 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 50
+   vertex 120 60 50
+   vertex 0 40 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 50
+   vertex 0 40 50
+   vertex 120 60 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 50
+   vertex 120 20 50
+   vertex 0 0 50
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 50
+   vertex 0 0 50
+   vertex 120 20 50
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 10
+   vertex 120 60 10
+   vertex 0 40 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 40 10
+   vertex 0 40 10
+   vertex 120 60 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 20 10
+   vertex 120 20 10
+   vertex 0 0 10
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 10
+   vertex 0 0 10
+   vertex 120 20 10
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 60
+   vertex 120 60 60
+   vertex 0 0 60
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 60
+   vertex 0 0 60
+   vertex 120 60 60
+  endloop
+ endfacet
+ facet normal -1 -0 0
+  outer loop
+   vertex 0 60 0
+   vertex 120 60 0
+   vertex 0 0 0
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 120 0 0
+   vertex 0 0 0
+   vertex 120 60 0
+  endloop
+ endfacet
+endsolid

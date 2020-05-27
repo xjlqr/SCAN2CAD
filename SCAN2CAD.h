@@ -10,6 +10,9 @@
 #include <utility>
 #include <cmath>
 #include <cstring>
+#include <ctime>
+#include <ratio>
+#include <chrono>
 
 
 //PCL components
@@ -40,9 +43,6 @@
 
 //Other stuff
 #include <Eigen/LU>
-#include "simple_fft/fft_settings.h"
-#include "simple_fft/fft.h"
-#include "delaunator.hpp"
 
 unsigned int pow2_ceil(size_t number) {
     unsigned int nearest_power = 1;//Find nearest power of 2 for fft

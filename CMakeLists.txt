@@ -16,4 +16,4 @@ add_definitions(${PCL_DEFINITIONS})
 add_executable (SCAN2CAD "SCAN2CAD.cpp" "SCAN2CAD.h")
 target_link_libraries (SCAN2CAD ${PCL_LIBRARIES})
 
-#add_definitions(-Wall -O3 -DNDEBUG -pipe -ffast-math -funroll-loops -ftree-vectorize -fomit-frame-pointer)
+add_definitions(-Wall -O3 -DNDEBUG -pipe -ffast-math -funroll-loops -ftree-vectorize -fomit-frame-pointer)

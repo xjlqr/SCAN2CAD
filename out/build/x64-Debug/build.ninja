@@ -39,8 +39,8 @@ include rules.ninja
 build cmake_object_order_depends_target_SCAN2CAD: phony || CMakeFiles\SCAN2CAD.dir
 
 build CMakeFiles\SCAN2CAD.dir\SCAN2CAD.cpp.obj: CXX_COMPILER__SCAN2CAD ..\..\..\SCAN2CAD.cpp || cmake_object_order_depends_target_SCAN2CAD
-  DEFINES = -DBOOST_ALL_NO_LIB -DLZ4_DLL_IMPORT=1 -D__SSE2__ -D__SSE__ -D__SSSE3__ -DvtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2) -DvtkRenderingCore_AUTOINIT=3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Zi /Ob0 /Od /RTC1
+  DEFINES = -DBOOST_ALL_NO_LIB -DLZ4_DLL_IMPORT=1 -DNDEBUG -D__SSE2__ -D__SSE__ -D__SSSE3__ -DvtkRenderingContext2D_AUTOINIT=1(vtkRenderingContextOpenGL2) -DvtkRenderingCore_AUTOINIT=3(vtkInteractionStyle,vtkRenderingFreeType,vtkRenderingOpenGL2)
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc  /MDd /Zi /Ob0 /Od /RTC1   -Wall -O3 -pipe -ffast-math -funroll-loops -ftree-vectorize -fomit-frame-pointer
   INCLUDES = -I"C:\Program Files\PCL 1.10.1\3rdParty\VTK\include\vtk-8.2" -I"C:\Program Files\PCL 1.10.1\include\pcl-1.10" -I"C:\Program Files\PCL 1.10.1\3rdParty\Eigen\eigen3" -I"C:\Program Files\PCL 1.10.1\3rdParty\Boost\include\boost-1_72" -I"C:\Program Files\OpenNI2\Include" -I"C:\Program Files\PCL 1.10.1\3rdParty\Qhull\include" -I"C:\Program Files\PCL 1.10.1\3rdParty\FLANN\include"
   OBJECT_DIR = CMakeFiles\SCAN2CAD.dir
   OBJECT_FILE_DIR = CMakeFiles\SCAN2CAD.dir
